@@ -1,173 +1,5 @@
-// import React from 'react';
-// import { Button, Badge } from 'react-bootstrap';
-// import { HeartFill, EmojiSmileFill, Stars } from 'react-bootstrap-icons';
-
-// import GradientBackground from '../components/GradientBackground';
-// import GlassCard from '../components/GlassCard';
-// import FloatingHearts from '../components/FloatingHearts';
-// import AnimatedEmoji from '../components/AnimatedEmoji';
-// import DodgeCounter from '../components/DodgeCounter';
-// import GlobalStyles from '../components/GlobalStyles';
-// import useNoButtonDodge from '../hooks/useNoButtonDodge';
-
-// const QuestionPage = ({ onYesClick }) => {
-//   const {
-//     position,
-//     dodgeCount,
-//     showHint,
-//     containerRef,
-//     handlers
-//   } = useNoButtonDodge();
-
-//   return (
-//     <GradientBackground
-//       gradient="linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)"
-//     >
-//       <GlobalStyles />
-//       <FloatingHearts />
-      
-//       <div ref={containerRef} className="w-100 d-flex justify-content-center">
-//         <GlassCard>
-//           {/* Animated Emoji */}
-//           <AnimatedEmoji 
-//             icon={EmojiSmileFill} 
-//             size="4rem" 
-//             color="text-warning"
-//             animation="bounce"
-//           />
-
-//           {/* Title */}
-//           <h1 
-//             className="mb-4 fw-bold"
-//             style={{
-//               background: 'linear-gradient(45deg, #667eea, #764ba2)',
-//               WebkitBackgroundClip: 'text',
-//               WebkitTextFillColor: 'transparent',
-//               fontSize: 'clamp(1.8rem, 5vw, 2.5rem)'
-//             }}
-//           >
-//             Will You Go Out With Me?
-//           </h1>
-
-//           {/* Subtitle */}
-//           <p className="text-muted mb-5 fs-5">
-//             I've been wanting to ask you this for a while now...
-//             <span className="d-block mt-2" style={{ fontSize: '0.9rem' }}>
-//               <HeartFill 
-//                 className="text-danger me-1" 
-//                 style={{ animation: 'pulse 1.5s infinite' }} 
-//               />
-//               Choose wisely!
-//             </span>
-//           </p>
-
-//           {/* Buttons */}
-//           <div className="position-relative" style={{ minHeight: '200px' }}>
-//             {/* Yes Button */}
-//             <YesButton onClick={onYesClick} />
-
-//             {/* No Button */}
-//             <NoButton 
-//               position={position}
-//               dodgeCount={dodgeCount}
-//               handlers={handlers}
-//             />
-
-//             {/* Hint */}
-//             {showHint && (
-//               <div 
-//                 className="mt-4 text-muted fst-italic"
-//                 style={{ animation: 'fadeIn 1s ease' }}
-//               >
-//                 <small>
-//                   <Stars className="me-1 text-warning" />
-//                   Hmm... seems like the "No" button doesn't want to be clicked!
-//                   <Stars className="ms-1 text-warning" />
-//                 </small>
-//               </div>
-//             )}
-
-//             {/* Dodge Counter */}
-//             <DodgeCounter count={dodgeCount} />
-//           </div>
-//         </GlassCard>
-//       </div>
-//     </GradientBackground>
-//   );
-// };
-
-// // Yes Button Component
-// const YesButton = ({ onClick }) => {
-//   const handleMouseEnter = (e) => {
-//     e.target.style.transform = 'scale(1.1)';
-//     e.target.style.boxShadow = '0 15px 40px rgba(17, 153, 142, 0.6)';
-//   };
-
-//   const handleMouseLeave = (e) => {
-//     e.target.style.transform = 'scale(1)';
-//     e.target.style.boxShadow = '0 10px 30px rgba(17, 153, 142, 0.4)';
-//   };
-
-//   return (
-//     <Button
-//       variant="success"
-//       size="lg"
-//       className="px-5 py-3 fw-bold border-0"
-//       onClick={onClick}
-//       style={{
-//         background: 'linear-gradient(45deg, #11998e, #38ef7d)',
-//         borderRadius: '50px',
-//         fontSize: '1.3rem',
-//         boxShadow: '0 10px 30px rgba(17, 153, 142, 0.4)',
-//         transition: 'all 0.3s ease',
-//         position: 'relative',
-//         zIndex: 10
-//       }}
-//       onMouseEnter={handleMouseEnter}
-//       onMouseLeave={handleMouseLeave}
-//     >
-//       <HeartFill className="me-2" />
-//       Yes
-//     </Button>
-//   );
-// };
-
-// // No Button Component
-// const NoButton = ({ position, dodgeCount, handlers }) => {
-//   const isFloating = dodgeCount > 0;
-
-//   return (
-//     <Button
-//       variant="danger"
-//       size="lg"
-//       className="px-5 py-3 fw-bold border-0"
-//       style={{
-//         background: 'linear-gradient(45deg, #eb3349, #f45c43)',
-//         borderRadius: '50px',
-//         fontSize: '1.3rem',
-//         boxShadow: '0 10px 30px rgba(235, 51, 73, 0.4)',
-//         position: isFloating ? 'fixed' : 'relative',
-//         left: isFloating ? `${position.x}px` : 'auto',
-//         top: isFloating ? `${position.y}px` : 'auto',
-//         zIndex: 100,
-//         transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-//         cursor: 'not-allowed',
-//         marginTop: isFloating ? '0' : '20px',
-//         marginLeft: isFloating ? '0' : '20px'
-//       }}
-//       {...handlers}
-//     >
-//       No
-//     </Button>
-//   );
-// };
-
-// export default QuestionPage;
-
-
-
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { HeartFill, EmojiSmileFill, Stars } from 'react-bootstrap-icons';
 
@@ -179,7 +11,9 @@ import DodgeCounter from '../components/DodgeCounter';
 import GlobalStyles from '../components/GlobalStyles';
 import useNoButtonDodge from '../hooks/useNoButtonDodge';
 
-const QuestionPage = ({ onYesClick }) => {
+const QuestionPage = () => {
+  const navigate = useNavigate();
+  
   const {
     isFloating,
     gridStyles,
@@ -187,6 +21,10 @@ const QuestionPage = ({ onYesClick }) => {
     showHint,
     handlers
   } = useNoButtonDodge();
+
+  const handleYesClick = () => {
+    navigate('/success');
+  };
 
   return (
     <GradientBackground
@@ -227,7 +65,6 @@ const QuestionPage = ({ onYesClick }) => {
             </span>
           </p>
 
-          {/* CSS Grid container - button moves between grid cells */}
           <div 
             className="position-relative"
             style={{
@@ -240,19 +77,16 @@ const QuestionPage = ({ onYesClick }) => {
               position: 'relative'
             }}
           >
-            {/* Yes Button - always in center */}
             <div style={{ gridColumn: '2 / 4', gridRow: '2 / 4', zIndex: 10 }}>
-              <YesButton onClick={onYesClick} />
+              <YesButton onClick={handleYesClick} />
             </div>
 
-            {/* No Button - moves to random grid cell */}
             <NoButton 
               isFloating={isFloating}
               gridStyles={gridStyles}
               handlers={handlers}
             />
 
-            {/* Hint */}
             {showHint && (
               <div 
                 style={{ 
@@ -271,7 +105,6 @@ const QuestionPage = ({ onYesClick }) => {
               </div>
             )}
 
-            {/* Dodge Counter */}
             <div style={{ gridColumn: '1 / -1', gridRow: '5', marginTop: '30px' }}>
               <DodgeCounter count={dodgeCount} />
             </div>
@@ -318,7 +151,6 @@ const YesButton = ({ onClick }) => {
 
 const NoButton = ({ isFloating, gridStyles, handlers }) => {
   if (!isFloating) {
-    // Initial position - next to Yes button
     return (
       <Button
         variant="danger"
@@ -340,7 +172,6 @@ const NoButton = ({ isFloating, gridStyles, handlers }) => {
     );
   }
 
-  // Dodging position - placed in a grid cell
   return (
     <Button
       variant="danger"

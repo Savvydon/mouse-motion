@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Badge } from 'react-bootstrap';
 import { HeartFill, BalloonHeartFill, Stars } from 'react-bootstrap-icons';
 
@@ -9,7 +10,13 @@ import Confetti from '../components/Confetti';
 import AnimatedEmoji from '../components/AnimatedEmoji';
 import GlobalStyles from '../components/GlobalStyles';
 
-const SuccessPage = ({ onReset }) => {
+const SuccessPage = () => {
+  const navigate = useNavigate();
+
+  const handleReset = () => {
+    navigate('/');
+  };
+
   return (
     <GradientBackground
       gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ffd93d 100%)"
@@ -19,7 +26,6 @@ const SuccessPage = ({ onReset }) => {
       <FloatingHearts />
 
       <GlassCard animation="scaleIn">
-        {/* Celebration Icon */}
         <AnimatedEmoji 
           icon={BalloonHeartFill} 
           size="5rem" 
@@ -27,7 +33,6 @@ const SuccessPage = ({ onReset }) => {
           animation="bounce"
         />
 
-        {/* Title */}
         <h1 
           className="mb-3 fw-bold"
           style={{
@@ -40,7 +45,6 @@ const SuccessPage = ({ onReset }) => {
           Congratulations!
         </h1>
 
-        {/* Message Box */}
         <div 
           className="mb-4 p-3 rounded-3"
           style={{
@@ -50,18 +54,16 @@ const SuccessPage = ({ onReset }) => {
         >
           <h3 className="fw-bold mb-2" style={{ color: '#e84393' }}>
             <HeartFill className="me-2" style={{ animation: 'pulse 1s infinite' }} />
-            You Are My Captain And We'll On Hotspot!
+            You Will Be Going Out With Me!
             <HeartFill className="ms-2" style={{ animation: 'pulse 1s infinite' }} />
           </h3>
         </div>
 
-        {/* Description */}
         <p className="text-muted fs-5 mb-4">
           I knew you'd say yes!
           <span className="d-block mt-2">Can't wait for our date! </span>
         </p>
 
-        {/* Stats Badges */}
         <div className="d-flex justify-content-center gap-3 mb-4 flex-wrap">
           <Badge bg="danger" className="px-3 py-2 fs-6">
             <HeartFill className="me-1" /> Love Level: 100%
@@ -71,12 +73,11 @@ const SuccessPage = ({ onReset }) => {
           </Badge>
         </div>
 
-        {/* Reset Button */}
         <Button
           variant="outline-primary"
           size="lg"
           className="rounded-pill px-4"
-          onClick={onReset}
+          onClick={handleReset}
           style={{
             borderWidth: '2px',
             fontWeight: '600'

@@ -52,7 +52,7 @@ const GlassCard = forwardRef(({
           overflow: 'visible'  // Allow button to be visible (but we'll constrain it)
         }}
       >
-        <Card.Body className={`p-4 p-md-5 ${bodyClassName}`}>
+        <Card.Body className={`p-3 p-md-5 ${bodyClassName}`}>
           {children}
         </Card.Body>
       </Card>
