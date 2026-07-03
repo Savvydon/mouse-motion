@@ -54,14 +54,14 @@ const SuccessPage = () => {
         >
           <h3 className="fw-bold mb-2" style={{ color: '#e84393' }}>
             <HeartFill className="me-2" style={{ animation: 'pulse 1s infinite' }} />
-            You Will Be Going Out With Me!
+            You Are My Captain and We we'll On Hotspot!
             <HeartFill className="ms-2" style={{ animation: 'pulse 1s infinite' }} />
           </h3>
         </div>
 
         <p className="text-muted fs-5 mb-4">
           I knew you'd say yes!
-          <span className="d-block mt-2">Can't wait for our date! </span>
+          {/* <span className="d-block mt-2">Can't wait for our date! </span> */}
         </p>
 
         <div className="d-flex justify-content-center gap-3 mb-4 flex-wrap">
